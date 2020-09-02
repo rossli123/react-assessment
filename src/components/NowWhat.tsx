@@ -8,6 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from './Avatar';
+import MetricsSelector from './MetricsSelector';
 
 const useStyles = makeStyles({
   card: {
@@ -41,6 +42,10 @@ export default () => {
           <ListItem>
             <Avatar>5</Avatar>
             <ListItemText primary="Submit Your App" />
+          </ListItem>
+          <ListItem>
+            <Avatar>6</Avatar>
+            <MetricsSelector></MetricsSelector>
           </ListItem>
         </List>
 

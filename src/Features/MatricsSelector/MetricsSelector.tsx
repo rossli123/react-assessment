@@ -22,11 +22,10 @@ const MetricsSelector = () => {
 
     if (fetching) return <LinearProgress />;
     const options = data.getMetrics.map((metric: any) => { return { value: metric, label: metric } })
-
+    
     return (
         <Select options={options} isMulti={true} />
     );
-
 }
 export default () => {
     return (

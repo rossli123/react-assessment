@@ -8,7 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from './Avatar';
-import MetricsSelector from './MetricsSelector';
+import MetricsSelector from '../Features/MatricsSelector/MetricsSelector';
 
 const useStyles = makeStyles({
   card: {

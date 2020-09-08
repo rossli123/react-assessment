@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Provider, createClient, useQuery } from 'urql';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Select from 'react-select'
 
-const selectOptions = ['a', 'b', 'c']
+
 const client = createClient({
     url: 'https://react.eogresources.com/graphql',
 });
@@ -12,33 +13,26 @@ query {
   getMetrics
 }
 `;
-
 const MetricsSelector = () => {
     const [result] = useQuery({
         query: query,
     });
 
     const { fetching, data, error } = result;
-    
-    
+
     if (fetching) return <LinearProgress />;
-    console.log("have data now")
-    console.log(data.getMetrics);
+    const options = data.getMetrics.map((metric: any) => { return { value: metric, label: metric } })
 
     return (
-
-        <div>
-            <select>{data.getMetrics.map((options:string, index:  number ) => {
-                return <option value={options} key={index}>{options}</option>
-            })}
-            </select>
-        </div>
+        <Select options={options} isMulti={true} />
     );
 
 }
 export default () => {
-    return(
-    <Provider value={client}>
-        <MetricsSelector />
-    </Provider>);
+    return (
+        <div style={{ width: '400px', float: 'right', margin: '20px 20px 0 0' }}>
+            <Provider value={client}>
+                <MetricsSelector />
+            </Provider>
+        </div>);
 };

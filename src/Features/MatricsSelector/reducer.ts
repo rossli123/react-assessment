@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
-import MetricsSelector from './MetricsSelector';
-import StateManager from 'react-select';
 
 // this is a reducer for MetricsSelector
-export type ApiErrorAction = {
+
+export type ErrorAction = {
   error: string;
 };
 
@@ -16,17 +15,15 @@ const slice = createSlice({
     addMetric: (state, action: PayloadAction<string>) => {
       state.metrics.push(action.payload);
     },
-
     removeMetric: (state, action: PayloadAction<string>) => {
-      state.metrics = state.metrics.filter(metric => {
-        metric !== action.payload;
-      });
+      state.metrics = state.metrics.filter(metric => 
+        metric !== action.payload
+      )
     },
-
-    removeAllMetrics: (state, action: PayloadAction<string>) => {
+    removeAllMetrics: (state, action: PayloadAction) => {
         state.metrics = [];
     },
-    ErrorReceived: (state, action: PayloadAction<ApiErrorAction>) => state,
+    ErrorReceived: (state, action: PayloadAction<ErrorAction>) => state,
   },
 });
 

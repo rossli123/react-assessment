@@ -24,11 +24,6 @@ query {
 }
 `;
 
-type OptionType = {
-  value: string;
-  label: string;
-};
-
 const MetricsSelector = () => {
   const classes = useStyles();
 
@@ -40,12 +35,14 @@ const MetricsSelector = () => {
 
   const { fetching, data, error } = result;
 
-  if (fetching) return <LinearProgress />;
-  if (error) return <h1>COULD NO FIND DATA</h1>;
+if (fetching) {
+  // console.log("MetricSelector Fetching...");
+  return <LinearProgress />
+};
+  if (error) return <div>Error: Could not find data</div>;
   const options = data.getMetrics.map((metric: any) => {
     return { value: metric, label: metric };
   });
-
   const changeHandler = (value: ValueType<OptionTypeBase>, actionMeta: ActionMeta<OptionTypeBase>) => {
     setSelectedOption(selectedOption as ValueType<any>);
     switch (actionMeta.action) {

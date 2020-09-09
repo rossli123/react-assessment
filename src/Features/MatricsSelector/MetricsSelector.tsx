@@ -40,9 +40,10 @@ if (fetching) {
   return <LinearProgress />
 };
   if (error) return <div>Error: Could not find data</div>;
-  const options = data.getMetrics.map((metric: any) => {
-    return { value: metric, label: metric };
-  });
+  let options:any = [];
+  for (let metric of data.getMetrics) {
+    options.push({ value: metric, label: metric });
+  }
   const changeHandler = (value: ValueType<OptionTypeBase>, actionMeta: ActionMeta<OptionTypeBase>) => {
     setSelectedOption(selectedOption as ValueType<any>);
     switch (actionMeta.action) {

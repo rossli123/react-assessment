@@ -1,14 +1,15 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardHeader from './CardHeader';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+// import Card from '@material-ui/core/Card';
+// import CardHeader from './CardHeader';
+// import Typography from '@material-ui/core/Typography';
+// import CardContent from '@material-ui/core/CardContent';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from './Avatar';
+// import Avatar from './Avatar';
 import MetricsSelector from '../Features/MatricsSelector/MetricsSelector';
+import MetricCard from '../Features/MetricCard/MetricCard';
 
 const useStyles = makeStyles({
   card: {
@@ -54,7 +55,9 @@ export default () => {
     //     </Typography>
     //   </CardContent>
     // </Card>
+    <div>
             <MetricsSelector></MetricsSelector>
-
+            <MetricCard />
+    </div>
   );
 };

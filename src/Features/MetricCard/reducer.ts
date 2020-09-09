@@ -20,7 +20,7 @@ const slice = createSlice({
   name: 'mesurement',
   initialState,
   reducers: {
-    addMetric: (state, action: PayloadAction<{ metric: string; at: number; value: number; unit: string }>) => {
+    addLatestMetric: (state, action: PayloadAction<{ metric: string; at: number; value: number; unit: string }>) => {
       const { metric, at, value, unit } = action.payload;
       // console.log('mesurement reducer: metric=',metric,' at=',at,' value=',value,' unit=',unit);
       if (!state[metric]) {

@@ -6,13 +6,34 @@ export type ErrorAction = {
   error: string;
 };
 
-const initialState: { loading: boolean; metrics: string[] } = { loading: false, metrics: [] };
+const initialState: {
+  [metric: string]: {
+    name: string;
+    utc: boolean;
+    columns: string[];
+    points: { time: number; value: number; unit: string }[];
+  };
+} = {};
+
 
 const slice = createSlice({
-  name: 'cards',
+  name: 'mesurement',
   initialState,
   reducers: {
-    
+    addMetric: (state, action: PayloadAction<{ metric: string; at: number; value: number; unit: string }>) => {
+      const { metric, at, value, unit } = action.payload;
+      // console.log('mesurement reducer: metric=',metric,' at=',at,' value=',value,' unit=',unit);
+      if (!state[metric]) {
+        state[metric] = {
+          name: metric,
+          utc: true,
+          columns: ['time', 'value', 'unit'],
+          points: [{ time: at, value, unit }],
+        };
+      } else {
+        state[metric].points.push({ time: at, value, unit });
+      }
+    },
     ErrorReceived: (state, action: PayloadAction<ErrorAction>) => state,
   },
 });

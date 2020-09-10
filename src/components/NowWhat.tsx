@@ -9,7 +9,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // import Avatar from './Avatar';
 import MetricsSelector from '../Features/MatricsSelector/MetricsSelector';
-import MetricCard from '../Features/MetricCard/MetricCard';
+import MetricCard from '../Features/MetricMeasurement/MetricCard';
+import MetricChart from '../Features/MetricMeasurement/MetricChart';
 
 const useStyles = makeStyles({
   card: {
@@ -58,6 +59,7 @@ export default () => {
     <div>
             <MetricsSelector></MetricsSelector>
             <MetricCard />
+            <MetricChart />
     </div>
   );
 };
